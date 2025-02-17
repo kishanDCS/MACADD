@@ -4,7 +4,6 @@
     "description": "A simple API to get MAC address",
     "main": "server.js",
     "scripts": {
-      "install": "npm install",
       "start": "node server.js"
     },
     "dependencies": {
