@@ -1,6 +1,0 @@
-netmiko
-tabulate
-tqdm
-getpass4
-threading
-colorama
