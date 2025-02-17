@@ -1,15 +1,16 @@
-{
-    "name": "mac-api",
+  {
+    "name": "mac-address-api",
     "version": "1.0.0",
     "description": "A simple API to get MAC address",
-    "main": "yarn.js",
-    "license":"UNLICENSED",
+    "main": "server.js",
     "scripts": {
-      "start": "yarn.js"
+      "install": "npm install",
+      "start": "node server.js"
     },
     "dependencies": {
       "express": "^4.18.2",
       "cors": "^2.8.5"
     }
   }
+  
   
