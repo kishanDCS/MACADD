@@ -1,5 +1,9 @@
 const { networkInterfaces } = require('os');
 
+const express = require("express");
+const app = express();
+const PORT = process.env.PORT || 3000; // Use the PORT provided by Render or default to 3000
+
 function getMacAddress() {
     const nets = networkInterfaces();
     for (const interface in nets) {
@@ -11,3 +15,7 @@ function getMacAddress() {
     }
 }
 console.log(getMacAddress());
+
+app.listen(PORT, () => {
+    console.log(`Server running on port ${PORT}`);
+});
