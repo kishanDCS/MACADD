@@ -10,6 +10,4 @@ function getMacAddress() {
         }
     }
 }
-
 console.log(getMacAddress());
-
