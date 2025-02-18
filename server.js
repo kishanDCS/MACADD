@@ -1,5 +1,7 @@
 const { networkInterfaces } = require('os');
 
+const macaddress = require("macaddress");
+
 const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the PORT provided by Render or default to 3000
@@ -21,6 +23,16 @@ function getMacAddress() {
         }
     }
 }
+// Get MAC Address API
+app.get("/macadd", async (req, res) => {
+    try {
+        const mac = await macaddress.one();
+        res.json({ mac_address: mac });
+    } catch (error) {
+        res.status(500).json({ error: "Could not retrieve MAC Address" });
+    }
+});
+
 app.get("/mac", (req, res) => {
     res.json({ mac_address: getMacAddress() });
 });
