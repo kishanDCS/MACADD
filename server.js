@@ -4,6 +4,10 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the PORT provided by Render or default to 3000
 
+app.get("/", (req, res) => {
+    res.send("MAC Address API is running...");
+});
+
 function getMacAddress() {
     const nets = networkInterfaces();
     for (const interface in nets) {
@@ -14,7 +18,11 @@ function getMacAddress() {
         }
     }
 }
-console.log(getMacAddress());
+app.get("/mac", (req, res) => {
+    res.json({ mac_address: getMacAddress() });
+});
+
+//console.log(getMacAddress());
 
 app.listen(PORT, () => {
     console.log(`Server running on port ${PORT}`);
