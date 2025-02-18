@@ -4,6 +4,9 @@ const express = require("express");
 const app = express();
 const PORT = process.env.PORT || 3000; // Use the PORT provided by Render or default to 3000
 
+const cors = require("cors");
+app.use(cors());
+
 app.get("/", (req, res) => {
     res.send("MAC Address API is running...");
 });
