@@ -1,4 +1,5 @@
 const { networkInterfaces } = require('os');
+const os = require('os');
 
 const express = require("express");
 const app = express();
@@ -15,17 +16,23 @@ function getMacAddress() {
     const nets = networkInterfaces();
     for (const interface in nets) {
         for (const net of nets[interface]) {
-           if (!net.internal && net.mac !== '00:00:00:00:00:00') {
+            if (!net.internal && net.host !== '00:00:00:00:00:00') {
                 return net.mac;
-            }
+             }
         }
     }
+}
+
+function getHostName() {
+    return os.hostname();
 }
 
 app.get("/mac", (req, res) => {
     res.json({ mac_address: getMacAddress() });
 });
-
+app.get("/host", (req, res) => {
+    res.json({ hostname: getHostName() });
+});
 console.log(getMacAddress());
 
 app.listen(PORT, () => {
